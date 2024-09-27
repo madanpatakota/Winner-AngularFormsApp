@@ -1,0 +1,98 @@
+
+<h1>Reactive approach</h1>
+<form style="margin: 50px" [formGroup]="myForm" >
+  
+    <div style="padding-left: 20px">
+      <label for="userName">Please enter the name *</label>&nbsp;
+      <input
+        id="userName"
+        placeholder="Please Enter name"
+        type="text"
+        name="userName"
+        formControlName = "userName" 
+      />
+      <!-- 
+     touched,untouched,pristine,dirty,valid,invalid
+  -->
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span
+        *ngIf="myForm.get('userName')?.touched && myForm.get('userName')?.errors?.['required']"
+        style="color: red"
+      >
+        Please enter your Name</span>
+    </div>
+  
+    <div style="padding-left: 20px">
+      <label for="useremail">Please enter the Email *</label>&nbsp;
+      <input
+        id="useremail"
+        placeholder="Please Enter Email"
+        type="text"
+        name="useremail"
+        formControlName = "userEmail" 
+      />
+      <!-- 
+     touched,untouched,pristine,dirty,valid,invalid, errors
+  
+      localUserEmail.errors?     required  invalid
+      localUserEmail.errors?    email     emailformat
+  -->
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span
+      *ngIf="myForm.get('userEmail')?.touched && myForm.get('userEmail')?.errors?.['required']"
+      style="color: red"
+    >
+        Please enter your Email</span
+      >
+  
+    <span
+      *ngIf="myForm.get('userEmail')?.touched && myForm.get('userEmail')?.errors?.['email']"
+      style="color: red"
+      >
+      Please enter your Email Format</span>
+    </div>
+  
+    <div style="padding-left: 20px">
+      <label for="usercomments">Please enter the Your comments *</label>&nbsp;
+      <textarea
+        id="usercomments"
+        placeholder="Please Enter your comments"
+        type="text"
+        name="usercomments"
+        formControlName = "userComments" 
+      >
+    </textarea>
+      <!-- 
+     touched,untouched,pristine,dirty,valid,invalid, errors
+  
+      localUserEmail.errors?     required  invalid
+      localUserEmail.errors?    email     emailformat
+  -->
+      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span
+      *ngIf="myForm.get('userComments')?.touched && myForm.get('userComments')?.errors?.['required']"
+      style="color: red"
+      >
+        Please enter your comments</span
+      >
+  
+      <span
+      *ngIf="myForm.get('userComments')?.touched && myForm.get('userComments')?.errors?.['minlength']"
+      style="color: red"
+      >
+      Please enter alteast 5 Charcters</span>
+    </div>
+  
+    <div style="margin: 20px">
+      <button [disabled]="" (click)="evtSubmit()">Submit</button>
+    </div>
+</form>
